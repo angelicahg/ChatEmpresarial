@@ -4,16 +4,21 @@ const mongoose = require('mongoose');
 const dbConnection = async () => {
 
   try {
+    await mongoose.connect(process.env.DB_CNN_STRING, {
 
-    mongoose.connect(process.env.DB_CNN_STRING)
 
+    });
+
+    console.log('DB Online');
 
 
   } catch (error) {
     console.log(error);
-    throw Error('Error en la base de datos -vea logs');
-
+    throw new Error('Error en la base de datos - Hable con el admin');
   }
 
+}
 
+module.exports = {
+  dbConnection
 }
