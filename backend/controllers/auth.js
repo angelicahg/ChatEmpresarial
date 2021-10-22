@@ -1,5 +1,5 @@
 const { response } = require("express");
-const { body } = require("express-validator");
+
 
 
 
@@ -15,6 +15,9 @@ const crearUsuario = async (req, res = response) => {
 
 //login
 const login = async (req, res) => {
+
+
+
 
   const { email, password } = req.body;
 
