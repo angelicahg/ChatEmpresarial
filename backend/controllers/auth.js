@@ -102,12 +102,7 @@ const login = async (req, res) => {
 
 
 
-  res.json({
 
-    ok: true,
-
-
-  });
 
 }
 
