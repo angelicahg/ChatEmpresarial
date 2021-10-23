@@ -43,6 +43,7 @@ class Server {
 
         //API ENDPoints
         this.app.use('/api/login', require('../router/auth.js'));
+        this.app.use('/api/mensajes', require('../router/mensajes'));
 
 
     }
