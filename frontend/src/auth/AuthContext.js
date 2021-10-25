@@ -10,7 +10,7 @@ const initialState = {
     email: null,
 };
 
-export const AuthProvider = (children) => {
+export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(initialState);
 
     const login = (email, password) => {};
@@ -22,6 +22,7 @@ export const AuthProvider = (children) => {
     return (
         <AuthContext.Provider
             value={{
+                auth,
                 login,
                 register,
                 verificaToken,
