@@ -3,13 +3,13 @@ import { Searchbox } from './Searchbox';
 import { Sidebar } from './Sidebar';
 
 export const InboxPeople = () => {
-  return (
-    <div className="inbox_people">
+    return (
+        <div className="inbox_people">
 
-      <Searchbox />
+            <Searchbox />
 
-      <Sidebar />
+            <Sidebar />
 
-    </div>
-  )
+        </div>
+    )
 }

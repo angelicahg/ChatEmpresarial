@@ -10,13 +10,13 @@ moment.locale('es');
 
 
 export const ChatApp = () => {
-  return (
-    <ChatProvider>
-      <AuthProvider>
-        <SocketProvider>
-          <AppRouter />
-        </SocketProvider>
-      </AuthProvider>
-    </ChatProvider>
-  )
+    return (
+        <ChatProvider>
+            <AuthProvider>
+                <SocketProvider>
+                    <AppRouter />
+                </SocketProvider>
+            </AuthProvider>
+        </ChatProvider>
+    )
 }
