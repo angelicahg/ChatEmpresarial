@@ -6,6 +6,7 @@ export const InboxPeople = () => {
     return (
         <div className="inbox_people">
             <Searchbox />
+
             <Sidebar />
         </div>
     );

@@ -8,7 +8,7 @@ require('dotenv').config();
 // Inicializar la instancia del server
 const server = new Server();
 
-///Ejecutar el server
+// Ejecutar el server
 server.execute();
 
 

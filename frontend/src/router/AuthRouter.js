@@ -1,7 +1,9 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
+
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
+
 import "../css/login-register.css";
 
 export const AuthRouter = () => {
@@ -16,6 +18,7 @@ export const AuthRouter = () => {
                             path="/auth/register"
                             component={RegisterPage}
                         />
+
                         <Redirect to="/auth/login" />
                     </Switch>
                 </div>

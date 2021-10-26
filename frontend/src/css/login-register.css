@@ -27,7 +27,7 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #403866;
+    color: lightgreen;
 }
 
 /*---------------------------------------------*/
@@ -119,7 +119,7 @@ iframe {
 [ Utility ]*/
 .txt1 {
     font-size: 16px;
-    color: #827ffe;
+    color: seagreen;
     line-height: 1.4;
 }
 
@@ -326,7 +326,7 @@ iframe {
     padding: 0 20px;
     width: 100%;
     height: 62px;
-    background-color: #827ffe;
+    background-color: #2d61b0;
     border-radius: 3px;
 
     -webkit-transition: all 0.4s;
@@ -336,7 +336,7 @@ iframe {
 }
 
 .login100-form-btn:hover {
-    background-color: #403866;
+    background-color: slateblue;
 }
 
 .login100-form-btn:disabled {
@@ -367,7 +367,7 @@ iframe {
     right: 12px;
     pointer-events: none;
 
-    color: #c80000;
+    color: black;
     font-size: 14px;
     line-height: 1.4;
     text-align: left;
