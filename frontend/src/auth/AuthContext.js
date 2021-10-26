@@ -1,5 +1,5 @@
-import React, { createContext, useState, useCallback } from "react";
-import { fetchSinToken } from "../helpers/fetch";
+import React, { createContext, useCallback, useState } from "react";
+import { fetchConToken, fetchSinToken } from "../helpers/fetch";
 
 export const AuthContext = createContext();
 
@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         const resp = await fetchSinToken("login", { email, password }, "POST");
+
         if (resp.ok) {
             localStorage.setItem("token", resp.token);
             const { usuario } = resp;
@@ -28,12 +29,84 @@ export const AuthProvider = ({ children }) => {
                 email: usuario.email,
             });
         }
+
+        return resp.ok;
     };
 
-    const register = (nombre, email, password) => {};
-    const verificaToken = useCallback(() => {}, []);
+    const register = async (nombre, email, password) => {
+        const resp = await fetchSinToken(
+            "login/new",
+            { nombre, email, password },
+            "POST"
+        );
 
-    const logout = () => {};
+        if (resp.ok) {
+            localStorage.setItem("token", resp.token);
+            const { usuario } = resp;
+
+            setAuth({
+                uid: usuario.uid,
+                checking: false,
+                logged: true,
+                name: usuario.nombre,
+                email: usuario.email,
+            });
+
+            return true;
+        }
+
+        return resp.msg;
+    };
+
+    const verificaToken = useCallback(async () => {
+        const token = localStorage.getItem("token");
+        // Si token no existe
+        if (!token) {
+            setAuth({
+                uid: null,
+                checking: false,
+                logged: false,
+                name: null,
+                email: null,
+            });
+
+            return false;
+        }
+
+        const resp = await fetchConToken("login/renew");
+        if (resp.ok) {
+            localStorage.setItem("token", resp.token);
+            const { usuario } = resp;
+
+            setAuth({
+                uid: usuario.uid,
+                checking: false,
+                logged: true,
+                name: usuario.nombre,
+                email: usuario.email,
+            });
+
+            return true;
+        } else {
+            setAuth({
+                uid: null,
+                checking: false,
+                logged: false,
+                name: null,
+                email: null,
+            });
+
+            return false;
+        }
+    }, []);
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setAuth({
+            checking: false,
+            logged: false,
+        });
+    };
 
     return (
         <AuthContext.Provider
